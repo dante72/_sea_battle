@@ -45,6 +45,7 @@ Player battle_shoot(Player p, const int nn, bool demo, int index);
 void print_player(int index, bool demo);
 int scan_point(Player* p, const int nn, int index);
 void print_all(Player* p, const int nn, int index, bool demo, int point, int point2);
+void DrawUnit(Unit p, bool demo);
 void DrawPoint(Unit p, bool demo, int color);
 void sea_battle(const int nn, int max_size, bool demo);
 void draw_item(string item, int color, int bg);
