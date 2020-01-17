@@ -126,7 +126,7 @@
     <ClCompile Include="battle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map_generator.cpp" />
-    <ClCompile Include="print.cpp" />
+    <ClCompile Include="print_field.cpp" />
     <ClCompile Include="print_char.cpp" />
     <ClCompile Include="scan.cpp" />
     <ClCompile Include="shooting.cpp" />
