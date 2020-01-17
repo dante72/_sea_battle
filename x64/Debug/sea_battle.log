@@ -1,0 +1,6 @@
+﻿  battle.cpp
+  main.cpp
+  print.cpp
+  Создание кода...
+D:\Home_Work\test_clone\main.cpp(10,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  sea_battle.vcxproj -> D:\Home_Work\test_clone\x64\Debug\sea_battle.exe
