@@ -1,4 +1,3 @@
-#include <iostream>
 #include "header.h"
 
 Unit** create_squard(const int n)
@@ -11,7 +10,7 @@ Unit** create_squard(const int n)
 	return matrix;
 }
 
-Unit** matrix_value(Unit** m, const int n, short value, bool status)
+Unit** zero_matrix(Unit** m, const int n, short value, bool status)
 {
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)

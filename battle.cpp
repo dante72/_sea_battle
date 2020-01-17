@@ -115,7 +115,7 @@ void sea_battle(const int nn, int max_size, bool demo)
 	for (int i = 0; i < 2; i++)
 	{
 		Unit** m = create_squard(nn);
-		m = matrix_value(m, nn, 0, 0);
+		m = zero_matrix(m, nn, 0, 0);
 		m = map_generator(m, nn, max_size);
 		p[i].m = m;
 		p[i].under_attack = false;
@@ -143,8 +143,8 @@ void sea_battle(const int nn, int max_size, bool demo)
 		print_all(p, nn, index, demo, p[1].r, p[0].r);
 		if (p[index].status == 0)
 			index = (++index) % 2;
-		//if (demo)
-			//getchar();
+		if (demo)
+			getchar();
 	}
 
 	for (int i = 0; i < 2; i++)

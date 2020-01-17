@@ -1,6 +1,7 @@
-#include <iostream>
 #ifndef HEADER_H
 #define HEADER_H
+
+#include <iostream>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ void SetColor(int text, int background);
 void draw_item(string item, int color, int bg);
 void print(Player* p, const int n, bool demo, int point, int poitn2);
 Unit** create_squard(const int n);
-Unit** matrix_value(Unit** m, const int n, short value, bool status);
+Unit** zero_matrix(Unit** m, const int n, short value, bool status);
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size);
 Unit** map_generator(Unit** m, const int nn, int size);
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size);

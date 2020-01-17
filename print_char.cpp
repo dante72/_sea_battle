@@ -1,8 +1,6 @@
 #include <windows.h>
 #include "header.h"
 
-//печать символа, соответствующий коду в двумерном массиве
-
 void SetColor(int text, int background)
 {
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
