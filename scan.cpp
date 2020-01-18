@@ -7,10 +7,10 @@ int scan_point(Player* p, const int nn, int index)
 	int i = p[1].r / nn;
 	int j = p[1].r % nn;
 
-	print_all(p, nn, index, false, p[1].r, p[0].r);
 	int x;
 	bool enter = false;
 	do {
+		print_all(p, nn, index, false, nn * i + j, p[0].r);
 		x = _getch();
 		switch (x)
 		{
@@ -34,7 +34,6 @@ int scan_point(Player* p, const int nn, int index)
 			if (!p[1].m[i][j].status)
 				enter = true;
 		}
-		print_all(p, nn, index, false, nn * i + j, p[0].r);
 
 	} while (!enter);
 	return nn * i + j;

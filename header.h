@@ -1,9 +1,18 @@
+#include <iostream>
+
 #ifndef HEADER_H
 #define HEADER_H
 
-#include <iostream>
-
 using namespace std;
+
+
+struct Menu
+{
+	short name;
+	short choose;
+	short next;
+};
+
 
 struct Unit
 {
@@ -50,6 +59,8 @@ void DrawUnit(Unit p, bool demo);
 void DrawPoint(Unit p, bool demo, int color);
 void sea_battle(const int nn, int max_size, bool demo);
 void draw_item(string item, int color, int bg);
+void menu(int n_menu);
+Menu* change_menu(Menu* m, int index);
 
 #endif 
 

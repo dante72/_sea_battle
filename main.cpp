@@ -10,7 +10,8 @@ int main()
 	int max_size = 4;
 	bool demo = false;
 
-	sea_battle(nn, max_size, demo);
+	//sea_battle(nn, max_size, demo);
+	menu(0);
 
 	getchar();
 	getchar();
