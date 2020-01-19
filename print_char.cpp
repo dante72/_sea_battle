@@ -49,10 +49,10 @@ void DrawPoint(Unit p, bool demo, int color, int color2)
 			else
 				draw_item(sea, Black, color);
 		else
-			draw_item(destroyed_ship, Black, color2);
+			draw_item(destroyed_ship, LightGray, color2);
 	else
 		if (!p.status)
 			draw_item(sea, Black, color);
 		else
-			draw_item(miss, Black, color2);
+			draw_item(miss, DarkGray, color2);
 }
