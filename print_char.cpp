@@ -25,22 +25,23 @@ void DrawUnit(Unit p, bool demo)
 			if (demo)
 				draw_item(ship, White, Black);
 			else
-				draw_item(sea, LightBlue, Black);
+				draw_item(sea, Cyan, Black);
 		else
 			draw_item(destroyed_ship, Black, White);
 	else
 		if (!p.status)
-			draw_item(sea, LightBlue, Black);
+			draw_item(sea, Cyan, Black);
 		else
 			draw_item(miss, White, Black);
 }
 
-void DrawPoint(Unit p, bool demo, int color)
+void DrawPoint(Unit p, bool demo, int color, int color2)
 {
 	string ship = { char(219), char(219) };
 	string destroyed_ship = "XX";
 	string miss = { char(177), char(177) };
 	string sea = { char(177), char(177) };
+
 	if (p.value > 0)
 		if (!p.status)
 			if (demo)
@@ -48,10 +49,10 @@ void DrawPoint(Unit p, bool demo, int color)
 			else
 				draw_item(sea, Black, color);
 		else
-			draw_item(destroyed_ship, Black, color);
+			draw_item(destroyed_ship, Black, color2);
 	else
 		if (!p.status)
 			draw_item(sea, Black, color);
 		else
-			draw_item(miss, Black, color);
+			draw_item(miss, Black, color2);
 }

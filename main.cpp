@@ -13,7 +13,7 @@ int main()
 	//sea_battle(nn, max_size, demo);
 	menu(0);
 
-	getchar();
-	getchar();
+//	getchar();
+//	getchar();
 	return 0;
 }

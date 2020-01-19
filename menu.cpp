@@ -4,6 +4,11 @@
 Menu* change_menu(Menu* m, int index);
 void menu(int n_menu);
 
+void close()
+{
+	exit(0);
+}
+
 int print_menu(int i)
 {
 	const int n = 3;
@@ -61,9 +66,11 @@ void menu(int n_menu)
 		{
 			sea_battle((m[1].choose + 1) * 5, (m[1].choose + 1) * 2, m[0].choose);
 			i = 0;
-			getchar();
-			getchar();
+			_getch();
+			_getch();
 		}
+		if (i == -1)
+			exit(0);
 	}
 }
 
@@ -103,7 +110,7 @@ Menu *change_menu(Menu *m, int index)
 	m[index].choose = i;
 	if (index == 1)
 		m[index].next = 2;
-	if(index == 1 && i == 3)
+	if(/*index == 1 && i == 3*/ i == n - 1)
 		m[index].next = index - 1;
 	
 	return m;
