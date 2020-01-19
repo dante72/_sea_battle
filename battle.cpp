@@ -144,7 +144,7 @@ void sea_battle(const int nn, int max_size, bool demo)
 		if (p[index].status == 0)
 			index = (++index) % 2;
 		if (demo)
-			getchar();
+			_getch();
 	}
 
 	for (int i = 0; i < 2; i++)
