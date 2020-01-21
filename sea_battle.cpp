@@ -1,4 +1,6 @@
-#include "header.h"
+#include "sea_battle.h"
+
+using namespace std;
 
 bool ship_is_destroyed(Unit** m, const int nn, int i, int j)
 {
@@ -112,6 +114,7 @@ int count_ships(Unit** m, const int nn, bool flag)
 void sea_battle(const int nn, int max_size, bool demo)
 {
 	Player p[2];
+	int x;
 	for (int i = 0; i < 2; i++)
 	{
 		Unit** m = create_squard(nn);
@@ -144,7 +147,7 @@ void sea_battle(const int nn, int max_size, bool demo)
 		if (p[index].status == 0)
 			index = (++index) % 2;
 		if (demo)
-			_getch();
+			x =_getch();
 	}
 
 	for (int i = 0; i < 2; i++)

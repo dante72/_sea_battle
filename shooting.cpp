@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sea_battle.h"
 
 /////////
 int n_space(Unit** m, const int nn, bool status)
@@ -138,4 +138,3 @@ int aim_shoot(Unit** m, const int nn, int i, int j)
 }
 
 /////////
-

@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sea_battle.h"
 
 Unit** create_squard(const int n)
 {

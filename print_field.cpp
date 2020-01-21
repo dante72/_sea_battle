@@ -1,4 +1,6 @@
-#include "header.h"
+#include "sea_battle.h"
+
+using namespace std;
 
 void print(Player* p, const int n, bool demo, int point, int point2)
 {

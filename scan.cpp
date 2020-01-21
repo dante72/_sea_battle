@@ -1,5 +1,5 @@
 #include <conio.h>
-#include "header.h"
+#include "sea_battle.h"
 
 
 int scan_point(Player* p, const int nn, int index)

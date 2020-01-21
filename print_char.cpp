@@ -1,5 +1,7 @@
 #include <windows.h>
-#include "header.h"
+#include "sea_battle.h"
+
+using namespace std;
 
 void SetColor(int text, int background)
 {

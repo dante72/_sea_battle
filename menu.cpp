@@ -1,8 +1,8 @@
 #include <conio.h>
-#include "header.h"
+#include <iostream>
+#include "menu.h"
 
-Menu* change_menu(Menu* m, int index);
-void menu(int n_menu);
+using namespace std;
 
 int print_menu(int i)
 {
@@ -18,6 +18,25 @@ int print_menu(int i)
 
 	system("cls");
 	cout << "\tSEA BATTLE\n\n";
+	for (int j = 0; j < n; j++)
+		cout << "\t" << change[j] << str[j] << endl;
+	return n;
+}
+
+int print_exit(int i)
+{
+	const int n = 2;
+	string str[n] = { "YES", "NO" };
+	string point = ">> ";
+	string empty = "   ";
+	string change[n];
+	for (int j = 0; j < n; j++)
+		change[j] = empty;
+
+	change[i] = point;
+
+	system("cls");
+	cout << "\tEXIT?\n\n";
 	for (int j = 0; j < n; j++)
 		cout << "\t" << change[j] << str[j] << endl;
 	return n;
@@ -45,13 +64,13 @@ int print_menu2(int i)
 void menu(int n_menu)
 {
 
-	Menu m[2];
+	Menu m[3];
 	Menu* p;
 	p = m;
 	m[0].name = 0;
 	m[1].name = 1;
-	//m[0].next = 0;
-	int i = 0;
+	m[2].name = 2;
+	int i = n_menu;
 	bool enter = false;
 	for (;;)
 	{
@@ -71,13 +90,16 @@ void menu(int n_menu)
 
 Menu *change_menu(Menu *m, int index)
 {
-	int i = 0, x, n;
+	int i = 0, x;
+	int n = 0;
 	bool enter = false;
 	do {
 		if (m[index].name == 0)
 			n = print_menu(i);
 		if (m[index].name == 1)
 			n = print_menu2(i);
+		if (m[index].name == 2)
+			n = print_exit(i);
 		x = _getch();
 		switch (x)
 		{

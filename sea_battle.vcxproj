@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="battle.cpp" />
+    <ClCompile Include="sea_battle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map_generator.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -133,7 +133,8 @@
     <ClCompile Include="shooting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header.h" />
+    <ClInclude Include="sea_battle.h" />
+    <ClInclude Include="menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
