@@ -38,7 +38,7 @@ int scan_point(Player* p, const int nn, int index);
 
 bool ship_is_destroyed(Unit** m, const int nn, int i, int j);
 Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j);
-Player battle_shoot(Player p, const int nn, bool demo, int index);
+Player *battle_shoot(Player *pl, const int nn, bool demo, int index);
 int count_ships(Unit** m, const int nn, bool flag);
 void sea_battle(const int nn, int max_size, bool demo);
 

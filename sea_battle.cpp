@@ -59,46 +59,48 @@ Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j)
 	return m;
 }
 
-Player battle_shoot(Player p, const int nn, bool demo, int index)
+Player *battle_shoot(Player *pl, const int nn, bool demo, int index)
 {
-	int r;
-	int status;
+	Player p;
+
+	p = pl[index];
 	if (!demo && index == 1)
-		r = p.r;
+	{
+		p.r = scan_point(pl, nn, index);
+	}
 	else
 	{
 		if (!p.under_attack)
-			r = random_shoot(p.m, nn);
+			p.r = random_shoot(p.m, nn);
 		else
-			r = aim_shoot(p.m, nn, p.last_hit / nn, p.last_hit % nn);
+			p.r = aim_shoot(p.m, nn, p.last_hit / nn, p.last_hit % nn);
 	}
-	p.m[r / nn][r % nn].status = true;
+	p.m[p.r / nn][p.r % nn].status = true;
 
-	if (p.m[r / nn][r % nn].value > 0)
+	if (p.m[p.r / nn][p.r % nn].value > 0)
 	{
-		p.last_hit = r;
+		p.last_hit = p.r;
 
-		if (!ship_is_destroyed(p.m, nn, r / nn, r % nn))
+		if (!ship_is_destroyed(p.m, nn, p.r / nn, p.r % nn))
 		{
-			status = 1;
+			p.status = 1;
 			p.under_attack = true;
 		}
 		else
 		{
-			p.m = area_of_the_destroyed_ship(p.m, nn, r / nn, r % nn);
-			status = 2;
+			p.m = area_of_the_destroyed_ship(p.m, nn, p.r / nn, p.r % nn);
+			p.status = 2;
 			p.under_attack = false;
 		}
 	}
 	else
 	{
-		status = 0;
+		p.status = 0;
 	}
 
-	p.r = r;
-	p.status = status;
+	pl[index] = p;
 
-	return p;
+	return pl;
 }
 
 int count_ships(Unit** m, const int nn, bool flag)
@@ -137,12 +139,7 @@ void sea_battle(const int nn, int max_size, bool demo)
 	int k = count_ships(p[0].m, nn, 0);
 	while (k != count_ships(p[0].m, nn, 1) && k != count_ships(p[1].m, nn, 1))
 	{
-		if (index == 1 && !demo)
-		{
-			p[index].r = scan_point(p, nn, index);
-		}
-
-		p[index] = battle_shoot(p[index], nn, demo, index);
+		battle_shoot(p, nn, demo, index);
 		print_all(p, nn, index, demo, p[1].r, p[0].r);
 		if (p[index].status == 0)
 			index = (++index) % 2;
