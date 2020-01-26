@@ -9,7 +9,7 @@ void SetColor(int text, int background)
 	SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
 }
 
-void draw_item(string item, int color, int bg)
+void draw_item(char *item, int color, int bg)
 {
 	SetColor(color, bg);
 	cout << item;
@@ -18,10 +18,10 @@ void draw_item(string item, int color, int bg)
 
 void DrawUnit(Unit p, bool demo)
 {
-	string ship = { char(219), char(219) };
-	string destroyed_ship = "XX";
-	string miss = { char(177), char(177) };
-	string sea = { char(177), char(177) };
+	char ship[] = { char(219), char(219), '\0' };
+	char destroyed_ship[3] = "XX";
+	char miss[] = { char(177), char(177), '\0' };
+	char sea[] = { char(177), char(177), '\0' };
 	if (p.value > 0)
 		if (!p.status)
 			if (demo)
@@ -39,10 +39,10 @@ void DrawUnit(Unit p, bool demo)
 
 void DrawPoint(Unit p, bool demo, int color, int color2)
 {
-	string ship = { char(219), char(219) };
-	string destroyed_ship = "XX";
-	string miss = { char(177), char(177) };
-	string sea = { char(177), char(177) };
+	char ship[] = { char(219), char(219), '\0' };
+	char destroyed_ship[3] = "XX";
+	char miss[] = { char(177), char(177), '\0' };
+	char sea[] = { char(177), char(177), '\0' };
 
 	if (p.value > 0)
 		if (!p.status)

@@ -49,7 +49,7 @@ void print_status(int status);
 void print_all(Player* p, const int nn, int index, bool demo, int point, int point2);
 
 void SetColor(int text, int background);
-void draw_item(std::string item, int color, int bg);
+void draw_item(char *item, int color, int bg);
 void DrawUnit(Unit p, bool demo);
 void DrawPoint(Unit p, bool demo, int color, int color2);
 
