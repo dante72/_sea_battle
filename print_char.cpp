@@ -22,6 +22,7 @@ void DrawUnit(Unit p, bool demo)
 	char destroyed_ship[3] = "XX";
 	char miss[] = { char(177), char(177), '\0' };
 	char sea[] = { char(177), char(177), '\0' };
+
 	if (p.value > 0)
 		if (!p.status)
 			if (demo)

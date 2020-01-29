@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 #ifndef SEA_BATTLE_H
 #define SEA_BATTLE_H
@@ -20,6 +19,24 @@ struct Player
 };
 
 enum Color { Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White };
+
+enum Buttons {
+	ESC = 27,
+	Enter = 13,
+	Down = 80,
+	Up = 72,
+	Right = 77,
+	Left = 75
+};
+
+struct Menu
+{
+	short name;
+	short choose;
+	short count;
+	short next;
+	short previous;
+};
 
 Unit** create_squard(const int n);
 Unit** zero_matrix(Unit** m, const int n, short value, bool status);
@@ -52,6 +69,11 @@ void SetColor(int text, int background);
 void draw_item(char *item, int color, int bg);
 void DrawUnit(Unit p, bool demo);
 void DrawPoint(Unit p, bool demo, int color, int color2);
+
+void print_menu(char str[][20], const int n, int i);
+Menu* change_menu(Menu* m, char str[][20], int index);
+int menu(int n_menu);
+int exit_menu();
 
 #endif
 

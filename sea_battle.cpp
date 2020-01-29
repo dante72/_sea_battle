@@ -1,4 +1,7 @@
+#include <conio.h>
 #include "sea_battle.h"
+
+bool g_exit;
 
 using namespace std;
 
@@ -116,7 +119,8 @@ int count_ships(Unit** m, const int nn, bool flag)
 void sea_battle(const int nn, int max_size, bool demo)
 {
 	Player p[2];
-	int x;
+	g_exit = false;
+
 	for (int i = 0; i < 2; i++)
 	{
 		Unit** m = create_squard(nn);
@@ -134,24 +138,46 @@ void sea_battle(const int nn, int max_size, bool demo)
 	cout << "\n\t";
 	print_player(index, demo);
 	cout << "is  first!";
+
 	getchar();
 
 	int k = count_ships(p[0].m, nn, 0);
 	while (k != count_ships(p[0].m, nn, 1) && k != count_ships(p[1].m, nn, 1))
-	{
+	{	
+		if (demo && _getch() == ESC)
+			if (exit_menu() == 0)
+			{
+				print_all(p, nn, index, demo, p[1].r, p[0].r);
+				continue;
+			}
 		battle_shoot(p, nn, demo, index);
+		if (g_exit)
+			break;
 		print_all(p, nn, index, demo, p[1].r, p[0].r);
 		if (p[index].status == 0)
 			index = (++index) % 2;
-		if (demo)
-			x =_getch();
 	}
 
 	for (int i = 0; i < 2; i++)
 	{
 		delete[] p[i].m;
 	}
-	cout << "\n\t";
-	print_player(index, demo);
-	cout << "win!" << endl << "\t\tGame Over";
+
+	if (!g_exit)
+	{
+		cout << "\n\t";
+		print_player(index, demo);
+		cout << "win!" << endl << "\t\tGame Over";
+		getchar();
+	}
+}
+
+int exit_menu()
+{
+	if (menu(2) == 1)
+	{
+		g_exit = true;
+		return 1;
+	}
+	return 0;
 }

@@ -1,6 +1,5 @@
 #include "sea_battle.h"
 
-/////////
 int n_space(Unit** m, const int nn, bool status)
 {
 	int k = 0;
@@ -28,8 +27,6 @@ int random_shoot(Unit** m, const int nn)
 		}
 	return 0;
 }
-
-////////
 
 int check_area(Unit** m, const int nn, int i, int j, bool status)
 {
@@ -116,7 +113,7 @@ int second_hit(Unit** m, const int nn, int i, int j, int random)
 			if (m[k][p].status == 0 && check_area(m, nn, k, p, 1) > 0)
 			{
 				check++;
-				if (/*random != 0 &&*/ random == check)
+				if (random == check)
 					return k * nn + p;
 			}
 		}
@@ -126,15 +123,10 @@ int second_hit(Unit** m, const int nn, int i, int j, int random)
 int aim_shoot(Unit** m, const int nn, int i, int j)
 {
 	if (check_area(m, nn, i, j, m[i][j].status) == 0)
-	{
 		return first_hit(m, nn, i, j);
-	}
 	else
-	{
 		return second_hit(m, nn, i, j, 0);
-	}
 
 	return 0;
 }
 
-/////////

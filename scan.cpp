@@ -1,7 +1,6 @@
 #include <conio.h>
 #include "sea_battle.h"
 
-
 int scan_point(Player* p, const int nn, int index)
 {
 	int i = p[1].r / nn;
@@ -14,24 +13,28 @@ int scan_point(Player* p, const int nn, int index)
 		x = _getch();
 		switch (x)
 		{
-		case 80:
+		case Down:
 			if (i + 1 < nn)
 				i++;
 			break;
-		case 77:
+		case Right:
 			if (j + 1 < nn)
 				j++;
 			break;
-		case 72:
+		case Up:
 			if (i - 1 >= 0)
 				i--;
 			break;
-		case 75:
+		case Left:
 			if (j - 1 >= 0)
 				j--;
 			break;
-		case 13:
+		case Enter:
 			if (!p[1].m[i][j].status)
+				enter = true;
+			break;
+		case ESC:
+			if(exit_menu() == 1)
 				enter = true;
 		}
 

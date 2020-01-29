@@ -1,136 +1,97 @@
 #include <conio.h>
-#include <iostream>
-#include "menu.h"
+#include "sea_battle.h"
 
 using namespace std;
 
-int print_menu(int i)
+void print_menu(char str[][20], const int n, int i)
 {
-	const int n = 3;
-	string str[n] = { "Game", "Demo", "Exit" };
-	string point = ">> ";
-	string empty = "   ";
-	string change[n];
+	char point[] = ">> ";
+	char empty[] = "   ";
+	char *change[4];
 	for (int j = 0; j < n; j++)
 		change[j] = empty;
-
 	change[i] = point;
 
 	system("cls");
-	cout << "\tSEA BATTLE\n\n";
+	cout << "\t"<< str[0] << "\n\n";
 	for (int j = 0; j < n; j++)
-		cout << "\t" << change[j] << str[j] << endl;
-	return n;
+		cout << "\t" << change[j] << str[j + 1] << endl;
 }
 
-int print_exit(int i)
+Menu* change_menu(Menu* m, char str[][20], int index)
 {
-	const int n = 2;
-	string str[n] = { "YES", "NO" };
-	string point = ">> ";
-	string empty = "   ";
-	string change[n];
-	for (int j = 0; j < n; j++)
-		change[j] = empty;
-
-	change[i] = point;
-
-	system("cls");
-	cout << "\tEXIT?\n\n";
-	for (int j = 0; j < n; j++)
-		cout << "\t" << change[j] << str[j] << endl;
-	return n;
-}
-
-int print_menu2(int i)
-{
-	const int n = 4;
-	string str[n] = { " 5x5", "10x10", "15x15", " Back" };
-	string point = ">> ";
-	string empty = "   ";
-	string change[n];
-	for (int j = 0; j < n; j++)
-		change[j] = empty;
-
-	change[i] = point;
-
-	system("cls");
-	cout << "\tChoose size:\n\n";
-	for (int j = 0; j < n; j++)
-		cout << "\t" << change[j] << str[j] << endl;
-	return n;
-}
-
-void menu(int n_menu)
-{
-
-	Menu m[3];
-	Menu* p;
-	p = m;
-	m[0].name = 0;
-	m[1].name = 1;
-	m[2].name = 2;
-	int i = n_menu;
+	int i = 0, x, n;
 	bool enter = false;
-	for (;;)
+
+	do
 	{
-		p = change_menu(p, i);
-		i = m[i].next;
-		if (i == 2)
-		{
-			sea_battle((m[1].choose + 1) * 5, (m[1].choose + 1) * 2, m[0].choose);
-			i = 0;
-			getchar();
-			getchar();
-		}
-		if (i == -1)
-			exit(0);
-	}
-}
-
-Menu *change_menu(Menu *m, int index)
-{
-	int i = 0, x;
-	int n = 0;
-	bool enter = false;
-	do {
-		if (m[index].name == 0)
-			n = print_menu(i);
-		if (m[index].name == 1)
-			n = print_menu2(i);
-		if (m[index].name == 2)
-			n = print_exit(i);
+		print_menu(str, m[index].count, i);
+		n = m[index].count;
 		x = _getch();
 		switch (x)
 		{
-		case 80:
+		case Down:
 			if (i + 1 < n)
 				i++;
 			break;
-			/*case 77:
-				if (j + 1 < n)
-					j++;
-				break;*/
-		case 72:
+
+		case Up:
 			if (i - 1 >= 0)
 				i--;
 			break;
-			/*case 75:
-				if (j - 1 >= 0)
-					j--;
-				break;*/
-		case 13:
+		case Enter:
 			enter = true;
 		}
 	} while (!enter);
 
-	if(i == n - 1)
-		m[index].next = index - 1;
-	else
-	{
-		m[index].next = index + 1;
-		m[index].choose = i;
-	}
+	m[index].choose = i;
 
 	return m;
+}
+
+int menu(int n_menu)
+{
+	Menu m[3];
+
+	char str[3][5][20]
+	{
+		{ "SEA BATTLE" ,"Game", "Demo", "Exit" },
+		{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
+		{ "Back to Menu", "Yes", "No" },
+	};
+
+	int count[3] = { 3, 4, 2};
+
+	for (int i = 0; i < 3; i++)
+	{
+		m[i].name = i;
+		m[i].count = count[i];
+		m[i].next = m[i].name + 1;
+		m[i].previous = m[i].name - 1;
+	}
+	m[1].next = 10;
+	m[2].previous = 7;
+
+	int i = n_menu;
+	bool enter = false;
+	for (;;)
+	{
+		change_menu(m, str[i], i);
+		if (m[i].choose == m[i].count - 1)
+			i = m[i].previous;
+		else
+			i = m[i].next;
+		if (i == 10)
+		{
+			sea_battle((m[1].choose + 1) * 5, (m[1].choose + 1) * 2, m[0].choose);
+			i = 0;
+		}
+		if (i == -1)
+			exit(0);
+		if (i == 7)
+			return 0;
+		if (i == 3)
+			return 1;
+	}
+	return 0;
 }
