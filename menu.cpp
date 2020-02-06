@@ -83,7 +83,7 @@ int menu(int n_menu)
 			i = m[i].next;
 		if (i == 10)
 		{
-			sea_battle((m[1].choose + 1) * 5, (m[1].choose + 1) * 2, m[0].choose);
+			sea_battle((m[1].choose + 1) * 5, m[0].choose);
 			i = 0;
 		}
 		if (i == -1)

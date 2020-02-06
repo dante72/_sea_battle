@@ -89,3 +89,12 @@ Unit** map_generator(Unit** m, const int nn, int size)
 	}
 	return m;
 }
+
+Unit** create_map(const int nn)
+{
+	int max_size = nn / 5 * 2;
+	Unit** m = create_squard(nn);
+	m = zero_matrix(m, nn, 0, 0);
+	m = map_generator(m, nn, max_size);
+	return m;
+}

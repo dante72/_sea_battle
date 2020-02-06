@@ -43,6 +43,7 @@ Unit** zero_matrix(Unit** m, const int n, short value, bool status);
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size);
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size);
 Unit** map_generator(Unit** m, const int nn, int size);
+Unit** create_map(const int nn);
 
 int n_space(Unit** m, const int nn, bool status);
 int random_shoot(Unit** m, const int nn);
@@ -57,7 +58,7 @@ bool ship_is_destroyed(Unit** m, const int nn, int i, int j);
 Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j);
 Player *battle_shoot(Player *pl, const int nn, bool demo, int index);
 int count_ships(Unit** m, const int nn, bool flag);
-void sea_battle(const int nn, int max_size, bool demo);
+void sea_battle(const int nn, bool demo);
 
 void print(Player* p, const int n, bool demo, int point, int poitn2);
 void print_player(int index, bool demo);
