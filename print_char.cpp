@@ -1,7 +1,25 @@
 #include <windows.h>
 #include "sea_battle.h"
 
-using namespace std;
+int index = 0;
+
+char ship[] = { char(219), char(219), '\0' };
+char destroyed_ship[] = "XX";
+char miss[] = { char(177), char(177), '\0' };
+char sea[] = { char(177), char(177), '\0' };
+
+int th[][8]	{
+				{White, Black, Cyan, Black, Black, White, White, Black},
+				{White, Black, Cyan, Black, Black, White, White, Black},
+			};
+int thp[][8]	{
+					{LightGreen, Black, Black, LightGreen, LightGray, Red, DarkGray, Red},
+					{LightGreen, Black, Black, LightGreen, LightGray, Red, DarkGray, Red}
+				};
+int thm[][2]	{
+					{White,  Black},
+					{LightRed,  Black}
+				};
 
 void SetColor(int text, int background)
 {
@@ -12,50 +30,56 @@ void SetColor(int text, int background)
 void draw_item(char *item, int color, int bg)
 {
 	SetColor(color, bg);
-	cout << item;
-	SetColor(White, Black);
+	printf("%s", item);
+	SetColor(thm[index][0], thm[index][1]);
 }
 
 void DrawUnit(Unit p, bool demo)
 {
-	char ship[] = { char(219), char(219), '\0' };
-	char destroyed_ship[3] = "XX";
-	char miss[] = { char(177), char(177), '\0' };
-	char sea[] = { char(177), char(177), '\0' };
+	int t_sh = th[index][0], bg_sh = th[index][1],\
+		t_sea = th[index][2], bg_sea = th[index][3], \
+		t_dsh = th[index][4], bg_dsh = th[index][5], \
+		t_miss = th[index][6], bg_miss = th[index][7];
 
 	if (p.value > 0)
 		if (!p.status)
 			if (demo)
-				draw_item(ship, White, Black);
+				draw_item(ship, t_sh, bg_sh);
 			else
-				draw_item(sea, Cyan, Black);
+				draw_item(sea, t_sea, bg_sea);
 		else
-			draw_item(destroyed_ship, Black, White);
+			draw_item(destroyed_ship, t_dsh, bg_dsh);
 	else
 		if (!p.status)
-			draw_item(sea, Cyan, Black);
+			draw_item(sea, t_sea, bg_sea);
 		else
-			draw_item(miss, White, Black);
+			draw_item(miss, t_miss, bg_miss);
 }
 
-void DrawPoint(Unit p, bool demo, int color, int color2)
+void DrawPoint(Unit p, bool demo)
 {
-	char ship[] = { char(219), char(219), '\0' };
-	char destroyed_ship[3] = "XX";
-	char miss[] = { char(177), char(177), '\0' };
-	char sea[] = { char(177), char(177), '\0' };
+	int t_sh = thp[index][0], bg_sh = thp[index][1], \
+		t_sea = thp[index][2], bg_sea = thp[index][3], \
+		t_dsh = thp[index][4], bg_dsh = thp[index][5], \
+		t_miss = thp[index][6], bg_miss = thp[index][7];
 
 	if (p.value > 0)
 		if (!p.status)
 			if (demo)
-				draw_item(ship, color, Black);
+				draw_item(ship, t_sh, bg_sh);
 			else
-				draw_item(sea, Black, color);
+				draw_item(sea, t_sea, bg_sea);
 		else
-			draw_item(destroyed_ship, LightGray, color2);
+			draw_item(destroyed_ship, t_dsh, bg_dsh);
 	else
 		if (!p.status)
-			draw_item(sea, Black, color);
+			draw_item(sea, t_sea, bg_sea);
 		else
-			draw_item(miss, DarkGray, color2);
+			draw_item(miss, t_miss, bg_miss);
+}
+
+void change_theme(int theme)
+{	
+	index = theme;
+	SetColor(thm[index][0], thm[index][1]);
 }

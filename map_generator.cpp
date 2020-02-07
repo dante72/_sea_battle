@@ -68,8 +68,10 @@ bool check_field(Unit** m, const int nn, int i, int j, int vector, int size)
 	return true;
 }
 
-Unit** map_generator(Unit** m, const int nn, int size)
+Unit** map_generator(Unit** m, const int nn)
 {
+	int size = nn / 5 * 2;
+
 	for (int z = 0; z < size; z++)
 	{
 		for (int y = 0; y <= z; y++)
@@ -90,11 +92,57 @@ Unit** map_generator(Unit** m, const int nn, int size)
 	return m;
 }
 
-Unit** create_map(const int nn)
+Unit** map_generator2(Unit** m, const int nn)
 {
-	int max_size = nn / 5 * 2;
+	int sh5x[] = {5, 1};
+	int sh10x[] = { 1, 5, 1, 4, 3, 3, 3, 2 };
+	int sh15x[] = { 2, 5, 3, 4, 4, 3, 5, 2 };
+	int *p = NULL;
+	int step = 0, index = 0;
+	switch (nn)
+	{
+	case 5:
+		p = sh5x;
+		step = 1;
+		break;
+	case 10:
+		p = sh10x;
+		step = 4;
+		break;
+	case 15:
+		p = sh15x;
+		step = 4;
+		break;
+	}
+
+	for (int z = 0; z < step; z++)
+	{
+		for (int y = 0; y < *(p + index); y++)
+		{
+			int i, j, vector;
+			bool flag;
+			do
+			{
+				i = rand() % nn;
+				j = rand() % nn;
+				vector = rand() % 2;
+				flag = check_field(m, nn, i, j, vector, *(p + index + 1));
+				if (flag)
+					m = create_item(m, nn, i, j, vector, *(p + index + 1));
+			} while (!flag);
+		}
+		index += 2;
+	}
+	return m;
+}
+
+Unit** create_map(const int nn, int mode)
+{
 	Unit** m = create_squard(nn);
 	m = zero_matrix(m, nn, 0, 0);
-	m = map_generator(m, nn, max_size);
+	if (mode == 0)
+		m = map_generator(m, nn);
+	else
+		m = map_generator2(m, nn);
 	return m;
 }

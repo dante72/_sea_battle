@@ -14,7 +14,7 @@ void print(Player* p, const int n, bool demo, int point, int point2)
 		for (int j = 0; j < n; j++)
 		{
 			if (i == point2 / n && j == point2 % n && p[0].status != -1)
-				DrawPoint(p[0].m[i][j], true, LightGreen, Red);
+				DrawPoint(p[0].m[i][j], true);
 			else
 				DrawUnit(p[0].m[i][j], true);
 		}
@@ -27,7 +27,7 @@ void print(Player* p, const int n, bool demo, int point, int point2)
 		for (int j = 0; j < n; j++)
 		{
 			if (i == point / n && j == point % n && (p[1].status != -1 || !demo))
-				DrawPoint(p[1].m[i][j], demo, LightGreen, Red);
+				DrawPoint(p[1].m[i][j], demo);
 			else
 				DrawUnit(p[1].m[i][j], demo);
 		}

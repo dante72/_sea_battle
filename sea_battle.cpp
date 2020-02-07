@@ -116,14 +116,14 @@ int count_ships(Unit** m, const int nn, bool flag)
 	return k;
 }
 
-void sea_battle(const int nn, bool demo)
+void sea_battle(const int nn, bool demo, int mode)
 {
 	Player p[2];
 	g_exit = false;
 
 	for (int i = 0; i < 2; i++)
 	{
-		p[i].m = create_map(nn);
+		p[i].m = create_map(nn, mode);
 		p[i].under_attack = false;
 		p[i].r = 0;
 		p[i].status = -1;

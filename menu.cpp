@@ -51,47 +51,54 @@ Menu* change_menu(Menu* m, char str[][20], int index)
 
 int menu(int n_menu)
 {
-	Menu m[3];
+	const int g = 6;
+	Menu m[g];
 
-	char str[3][5][20]
+	char str[g][5][20]
 	{
-		{ "SEA BATTLE" ,"Game", "Demo", "Exit" },
+		{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
 		{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
 		{ "Back to Menu", "Yes", "No" },
+		{ "Options", "Game", "Themes", "Back" },
+		{ "Game", "Standart", "Alternative" },
+		{ "Themes", "Theme1", "Theme2", "Back" }
 	};
+	int count[g]	{ 4, 4, 2, 3, 2, 3};
 
-	int count[3] = { 3, 4, 2};
-
-	for (int i = 0; i < 3; i++)
+	int path[g][4]	{ 
+						{1, 1, 3, -1},
+						{10, 10, 10, 0},
+						{11, 12},
+						{4, 5, 0},
+						{3, 3},
+						{5, 5, 3} 
+					};
+	for (int i = 0; i < g; i++)
 	{
 		m[i].name = i;
 		m[i].count = count[i];
-		m[i].next = m[i].name + 1;
-		m[i].previous = m[i].name - 1;
+		m[i].choose = 0;
 	}
-	m[1].next = 10;
-	m[2].previous = 7;
 
 	int i = n_menu;
-	bool enter = false;
 	for (;;)
 	{
 		change_menu(m, str[i], i);
-		if (m[i].choose == m[i].count - 1)
-			i = m[i].previous;
-		else
-			i = m[i].next;
+		i = path[i][m[i].choose];
+
 		if (i == 10)
 		{
-			sea_battle((m[1].choose + 1) * 5, m[0].choose);
+			sea_battle((m[1].choose + 1) * 5, m[0].choose, m[4].choose);
 			i = 0;
 		}
 		if (i == -1)
 			exit(0);
-		if (i == 7)
+		if (i == 12)
 			return 0;
-		if (i == 3)
+		if (i == 11)
 			return 1;
+		if (i == 5)
+			change_theme(m[5].choose);
 	}
 	return 0;
 }

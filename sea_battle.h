@@ -34,16 +34,15 @@ struct Menu
 	short name;
 	short choose;
 	short count;
-	short next;
-	short previous;
 };
 
 Unit** create_squard(const int n);
 Unit** zero_matrix(Unit** m, const int n, short value, bool status);
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size);
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size);
-Unit** map_generator(Unit** m, const int nn, int size);
-Unit** create_map(const int nn);
+Unit** map_generator(Unit** m, const int nn);
+Unit** create_map(const int nn, int mode);
+Unit** map_generator2(Unit** m, const int nn);
 
 int n_space(Unit** m, const int nn, bool status);
 int random_shoot(Unit** m, const int nn);
@@ -58,7 +57,7 @@ bool ship_is_destroyed(Unit** m, const int nn, int i, int j);
 Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j);
 Player *battle_shoot(Player *pl, const int nn, bool demo, int index);
 int count_ships(Unit** m, const int nn, bool flag);
-void sea_battle(const int nn, bool demo);
+void sea_battle(const int nn, bool demo, int mode);
 
 void print(Player* p, const int n, bool demo, int point, int poitn2);
 void print_player(int index, bool demo);
@@ -69,7 +68,8 @@ void print_all(Player* p, const int nn, int index, bool demo, int point, int poi
 void SetColor(int text, int background);
 void draw_item(char *item, int color, int bg);
 void DrawUnit(Unit p, bool demo);
-void DrawPoint(Unit p, bool demo, int color, int color2);
+void DrawPoint(Unit p, bool demo);
+void change_theme(int theme);
 
 void print_menu(char str[][20], const int n, int i);
 Menu* change_menu(Menu* m, char str[][20], int index);
