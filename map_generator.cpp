@@ -94,9 +94,9 @@ Unit** map_generator(Unit** m, const int nn)
 
 Unit** map_generator2(Unit** m, const int nn)
 {
-	int sh5x[] = {5, 1};
-	int sh10x[] = { 1, 5, 1, 4, 3, 3, 3, 2 };
-	int sh15x[] = { 2, 5, 3, 4, 4, 3, 5, 2 };
+	int sh5x[] = {4, 1};
+	int sh10x[] = { 1, 5, 1, 4, 2, 3, 3, 2 };
+	int sh15x[] = { 2, 5, 2, 4, 4, 3, 7, 2 };
 	int *p = NULL;
 	int step = 0, index = 0;
 	switch (nn)
