@@ -37,7 +37,6 @@ int scan_point(Player* p, const int nn, int index)
 			if(exit_menu() == 1)
 				enter = true;
 		}
-
 	} while (!enter);
 	return nn * i + j;
 }
