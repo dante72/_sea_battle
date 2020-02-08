@@ -54,6 +54,7 @@ int menu(int n_menu)
 	const int g = 7;
 	Menu m[g];
 	Modes mode;
+
 	char str[g][5][20]
 	{
 		{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
@@ -62,7 +63,7 @@ int menu(int n_menu)
 		{ "Options", "Maps", "Generator", "Themes", "Back" },
 		{ "Maps", "Standart", "Alternative" },
 		{ "Themes", "Theme1", "Theme2", "Back" },
-		{ "Map Generator", "Turn ON", "Turn OFF" },
+		{ "Map Generator", "Turn OFF", "Turn ON" },
 	};
 	int count[g]	{ 4, 4, 2, 4, 2, 3, 2};
 	int path[g][4]	{ 
@@ -93,7 +94,7 @@ int menu(int n_menu)
 				mode.mode = m[4].choose;
 				mode.m_generator = m[6].choose;
 				mode.demo = m[0].choose;
-				sea_battle((m[1].choose + 1) * 5, m[0].choose, mode);
+				sea_battle((m[1].choose + 1) * 5, mode);
 				i = 0;
 				break;
 		case -1:

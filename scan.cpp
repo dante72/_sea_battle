@@ -79,9 +79,6 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 			if (check_field(m, nn, i, j, vector, size))
 				enter = true;
 			break;
-		//case ESC:
-			//if (exit_menu() == 1)
-			//	enter = true;
 		}
 
 	} while (!enter);
