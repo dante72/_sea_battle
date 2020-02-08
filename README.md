@@ -1,4 +1,3 @@
-# sea_battle(battleship) / Морской бой
-first_programm
+# Sea Battle (Battleship) / Морской бой
 ![Screenshot](menu.png)
 ![Screenshot](sea_battle.png)
