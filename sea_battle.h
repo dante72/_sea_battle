@@ -22,6 +22,7 @@ struct Modes
 {
 	int mode;
 	int m_generator;
+	bool demo;
 };
 
 enum Color { Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White };

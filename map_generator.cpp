@@ -86,7 +86,7 @@ Unit** map_generator(Unit** m, const int nn, Modes &mode)
 				flag = check_field(m, nn, i, j, vector, size - z);
 				if (flag)
 				{
-					if (mode.m_generator == 1)
+					if (mode.m_generator == 1 && mode.demo == 0)
 						scan_point2(m, nn, i, j, vector, size - z);
 	
 					m = create_item(m, nn, i, j, vector, size - z);
@@ -135,7 +135,7 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 				flag = check_field(m, nn, i, j, vector, *(p + index + 1));
 				if (flag)
 				{
-					if (mode.m_generator == 1)
+					if (mode.m_generator == 1 && mode.demo == 0)
 						scan_point2(m, nn, i, j, vector, *(p + index + 1));
 					m = create_item(m, nn, i, j, vector, *(p + index + 1));
 				}

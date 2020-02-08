@@ -92,6 +92,7 @@ int menu(int n_menu)
 		case 10:
 				mode.mode = m[4].choose;
 				mode.m_generator = m[6].choose;
+				mode.demo = m[0].choose;
 				sea_battle((m[1].choose + 1) * 5, m[0].choose, mode);
 				i = 0;
 				break;

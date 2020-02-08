@@ -53,11 +53,11 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 		switch (x)
 		{
 		case Down:
-			if (i + 1 < nn)
+			if (i + 1 + (size  - 1) * vector < nn)
 				i++;
 			break;
 		case Right:
-			if (j + 1 < nn)
+			if (j + 1 + (size - 1) * !vector < nn)
 				j++;
 			break;
 		case Up:
@@ -70,6 +70,10 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 			break;
 		case Space:
 			vector = !vector;
+			if (i + size > nn)
+				i -= i + size - nn;
+			if (j + size > nn)
+				j -= j + size - nn;
 			break;
 		case Enter:
 			if (check_field(m, nn, i, j, vector, size))
