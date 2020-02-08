@@ -116,7 +116,7 @@ int count_ships(Unit** m, const int nn, bool flag)
 	return k;
 }
 
-void sea_battle(const int nn, bool demo, int mode)
+void sea_battle(const int nn, bool demo, Modes mode)
 {
 	Player p[2];
 	g_exit = false;

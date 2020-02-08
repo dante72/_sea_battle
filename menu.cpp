@@ -51,25 +51,28 @@ Menu* change_menu(Menu* m, char str[][20], int index)
 
 int menu(int n_menu)
 {
-	const int g = 6;
+	const int g = 7;
 	Menu m[g];
+	Modes mode;
 	char str[g][5][20]
 	{
 		{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
 		{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
 		{ "Back to Menu", "Yes", "No" },
-		{ "Options", "Game", "Themes", "Back" },
-		{ "Game", "Standart", "Alternative" },
-		{ "Themes", "Theme1", "Theme2", "Back" }
+		{ "Options", "Maps", "Generator", "Themes", "Back" },
+		{ "Maps", "Standart", "Alternative" },
+		{ "Themes", "Theme1", "Theme2", "Back" },
+		{ "Map Generator", "Turn ON", "Turn OFF" },
 	};
-	int count[g]	{ 4, 4, 2, 3, 2, 3};
+	int count[g]	{ 4, 4, 2, 4, 2, 3, 2};
 	int path[g][4]	{ 
 						{1, 1, 3, -1},
 						{10, 10, 10, 0},
 						{11, 12},
-						{4, 5, 0},
+						{4, 6, 5, 0},
 						{3, 3},
-						{13, 13, 3} 
+						{13, 13, 3},
+						{3, 3}
 					};
 
 	for (int j = 0; j < g; j++)
@@ -87,7 +90,9 @@ int menu(int n_menu)
 		switch (i)
 		{
 		case 10:
-				sea_battle((m[1].choose + 1) * 5, m[0].choose, m[4].choose);
+				mode.mode = m[4].choose;
+				mode.m_generator = m[6].choose;
+				sea_battle((m[1].choose + 1) * 5, m[0].choose, mode);
 				i = 0;
 				break;
 		case -1:

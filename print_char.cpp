@@ -86,3 +86,17 @@ void change_theme(int theme)
 	index = theme;
 	SetColor(thm[index][0], thm[index][1]);
 }
+
+void DrawPoint2(Unit p, bool status)
+{
+	int t_sh = thp[index][0], bg_sh = thp[index][1], \
+		t_sea = thp[index][2], bg_sea = thp[index][3], \
+		t_dsh = thp[index][4], bg_dsh = thp[index][5], \
+		t_miss = thp[index][6], bg_miss = thp[index][7];
+
+	if (status)
+		draw_item(ship, t_sh, bg_sh);
+	else
+		draw_item(ship, bg_dsh, t_dsh);
+}
+

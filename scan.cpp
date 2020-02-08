@@ -41,3 +41,45 @@ int scan_point(Player* p, const int nn, int index)
 	} while (!enter);
 	return nn * i + j;
 }
+
+int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
+{
+	int x;
+	bool enter = false;
+	do {
+		bool f = check_field(m, nn, i, j, vector, size);
+		print_one(m, nn, i, j, vector, size, f);
+		x = _getch();
+		switch (x)
+		{
+		case Down:
+			if (i + 1 < nn)
+				i++;
+			break;
+		case Right:
+			if (j + 1 < nn)
+				j++;
+			break;
+		case Up:
+			if (i - 1 >= 0)
+				i--;
+			break;
+		case Left:
+			if (j - 1 >= 0)
+				j--;
+			break;
+		case Space:
+			vector = !vector;
+			break;
+		case Enter:
+			if (check_field(m, nn, i, j, vector, size))
+				enter = true;
+			break;
+		//case ESC:
+			//if (exit_menu() == 1)
+			//	enter = true;
+		}
+
+	} while (!enter);
+	return nn * i + j;
+}

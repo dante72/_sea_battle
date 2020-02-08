@@ -32,7 +32,8 @@ void print(Player* p, const int n, bool demo, int point, int point2)
 				DrawUnit(p[1].m[i][j], demo);
 		}
 		cout << endl;
-	}	char ch;
+	}	
+	char ch;
 	cout << "   ";
 	for (int i = 0; i < n; i++)
 	{
@@ -118,4 +119,33 @@ void print_all(Player* p, const int nn, int index, bool demo, int point, int poi
 		print_unit(point, nn);
 		cout << endl;
 	}
+}
+
+void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool status)
+{
+	system("cls");
+	for (int k = 0; k < n; k++)
+	{
+		if (k + 1 > 9)
+			cout << k + 1 << " ";
+		else
+			cout << " " << k + 1 << " ";
+
+		for (int p = 0; p < n; p++)
+		{
+			if (k >=i &&  k <= i + (size - 1) * vector && p >= j && p <= j + (size - 1) * !vector)
+				DrawPoint2(m[i][j], status);
+			else
+				DrawUnit(m[k][p], true);
+		}
+		cout << endl;
+	}
+		char ch;
+		cout << "   ";
+		for (int k = 0; k < n; k++)
+		{
+			ch = 'A' + k;
+			cout << ch << " ";
+		}
+	
 }
