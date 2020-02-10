@@ -13,7 +13,7 @@ char sea[] = { char(177), char(177), '\0' };
 
 int th[][8]	{	//ship			sea			dship			miss
 				{White, Black, Cyan, Black, Black, White, White, Black},
-				{LightGray, Black, LightCyan, Black, Black, LightGray, Yellow, Black},
+				{Yellow, Black, Blue, Cyan, Black, Yellow, Yellow, Cyan},
 			};
 int thp[][8]	{
 					{LightGreen, Black, Black, LightGreen, LightGray, Red, DarkGray, Red},
@@ -21,7 +21,7 @@ int thp[][8]	{
 				};
 int thm[][2]	{
 					{White,  Black},
-					{Black,  DarkGray}
+					{Yellow,  Cyan}
 				};
 
 void SetColor(int text, int background)
