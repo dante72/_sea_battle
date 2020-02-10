@@ -23,42 +23,18 @@ Unit** zero_matrix(Unit** m, const int n, short value, bool status)
 
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size)
 {
-	int x = 0, y = 0;
-	switch (vector % 2)
-	{
-	case 0:
-		x = 1;
-		y = 0;
-		break;
-	case 1:
-		x = 0;
-		y = 1;
-		break;
-	}
-	for (int k = i; k <= i + (size - 1) * y; k++)
-		for (int p = j; p <= j + (size - 1) * x; p++)
+	for (int k = i; k <= i + (size - 1) * vector; k++)
+		for (int p = j; p <= j + (size - 1) * !vector; p++)
 			m[k][p].value = size;
 	return m;
 }
 
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size)
 {
-	int x = 0, y = 0;
-	switch (vector % 2)
-	{
-	case 0:
-		x = 1;
-		y = 0;
-		break;
-	case 1:
-		x = 0;
-		y = 1;
-		break;
-	}
-	if (!(i + (size - 1) * y < nn && j + (size - 1) * x < nn))
+	if (!(i + (size - 1) * vector < nn && j + (size - 1) * !vector < nn))
 		return false;
-	for (int k = i - 1; k <= i + 1 + (size - 1) * y; k++)
-		for (int p = j - 1; p <= j + 1 + (size - 1) * x; p++)
+	for (int k = i - 1; k <= i + 1 + (size - 1) * vector; k++)
+		for (int p = j - 1; p <= j + 1 + (size - 1) * !vector; p++)
 		{
 			if (!(k >= 0 && k < nn) || !(p >= 0 && p < nn))
 				continue;
@@ -101,7 +77,7 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 {
 	int sh[3][4][2]
 	{
-		{4, 1},
+		{ 4, 1 },
 		{ 1, 5, 1, 4, 2, 3, 3, 2 },
 		{ 2, 5, 2, 4, 4, 3, 7, 2 },
 	};

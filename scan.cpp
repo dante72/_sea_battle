@@ -44,10 +44,10 @@ int scan_point(Player* p, const int nn, int index)
 int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 {
 	int x;
-	bool enter = false;
+	bool enter = false, fcolor;
 	do {
-		bool f = check_field(m, nn, i, j, vector, size);
-		print_one(m, nn, i, j, vector, size, f);
+		fcolor = check_field(m, nn, i, j, vector, size);
+		print_one(m, nn, i, j, vector, size, fcolor);
 		x = _getch();
 		switch (x)
 		{
@@ -79,7 +79,6 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 				enter = true;
 			break;
 		}
-
 	} while (!enter);
 	return nn * i + j;
 }

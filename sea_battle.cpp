@@ -7,26 +7,18 @@ using namespace std;
 
 bool ship_is_destroyed(Unit** m, const int nn, int i, int j)
 {
-	int x = 0, y = 0;
+	int vector = 0;
 	int head = ship_head(m, nn, i, j);
 	int a = head / nn;
 	int b = head % nn;
 	int size = m[i][j].value;
+	//if (a + 1 < nn && m[a + 1][b].value > 0)
+		//	vector = 0;
+	if (b + 1 < nn && m[a][b + 1].value > 0)
+			vector = !vector;
 
-	if (a + 1 < nn)
-		if (m[a + 1][b].value > 0)
-		{
-			x = 0;
-			y = 1;
-		}
-	if (b + 1 < nn)
-		if (m[a][b + 1].value > 0)
-		{
-			x = 1;
-			y = 0;
-		}
-	for (int k = a; k <= a + (size - 1) * y; k++)
-		for (int p = b; p <= b + (size - 1) * x; p++)
+	for (int k = a; k <= a + (size - 1) * !vector; k++)
+		for (int p = b; p <= b + (size - 1) * vector; p++)
 			if (m[k][p].status == 0)
 				return false;
 	return true;
@@ -34,25 +26,17 @@ bool ship_is_destroyed(Unit** m, const int nn, int i, int j)
 
 Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j)
 {
-	int x = 0, y = 0;
+	int vector = 0;
 	int head = ship_head(m, nn, i, j);
 	int a = head / nn;
 	int b = head % nn;
 	int size = m[a][b].value;
-	if (a + 1 < nn)
-		if (m[a + 1][b].value > 0)
-		{
-			x = 0;
-			y = 1;
-		}
-	if (b + 1 < nn)
-		if (m[a][b + 1].value > 0)
-		{
-			x = 1;
-			y = 0;
-		}
-	for (int k = a - 1; k <= a + 1 + (size - 1) * y; k++)
-		for (int p = b - 1; p <= b + 1 + (size - 1) * x; p++)
+	//if (a + 1 < nn && m[a + 1][b].value > 0)
+		//	vector = 0;
+	if (b + 1 < nn && m[a][b + 1].value > 0)
+		vector = !vector;
+	for (int k = a - 1; k <= a + 1 + (size - 1) * !vector; k++)
+		for (int p = b - 1; p <= b + 1 + (size - 1) * vector; p++)
 		{
 			if (!(k >= 0 && k < nn) || !(p >= 0 && p < nn))
 				continue;
