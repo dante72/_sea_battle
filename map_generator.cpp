@@ -88,7 +88,6 @@ Unit** map_generator(Unit** m, const int nn, Modes &mode)
 				{
 					if (mode.m_generator == 0 && mode.demo == 0)
 						scan_point2(m, nn, i, j, vector, size - z);
-	
 					m = create_item(m, nn, i, j, vector, size - z);
 				}
 			} while (!flag);
@@ -100,30 +99,18 @@ Unit** map_generator(Unit** m, const int nn, Modes &mode)
 
 Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 {
-	int sh5x[] = {4, 1};
-	int sh10x[] = { 1, 5, 1, 4, 2, 3, 3, 2 };
-	int sh15x[] = { 2, 5, 2, 4, 4, 3, 7, 2 };
-	int *p = NULL;
-	int step = 0, index = 0;
-	switch (nn)
+	int sh[3][4][2]
 	{
-	case 5:
-		p = sh5x;
-		step = 1;
-		break;
-	case 10:
-		p = sh10x;
-		step = 4;
-		break;
-	case 15:
-		p = sh15x;
-		step = 4;
-		break;
-	}
+		{4, 1},
+		{ 1, 5, 1, 4, 2, 3, 3, 2 },
+		{ 2, 5, 2, 4, 4, 3, 7, 2 },
+	};
+	int step[]{ 1, 4, 4 };
+	int index = nn / 5 - 1;
 
-	for (int z = 0; z < step; z++)
+	for (int z = 0; z < step[index]; z++)
 	{
-		for (int y = 0; y < *(p + index); y++)
+		for (int y = 0; y < sh[index][z][0]; y++)
 		{
 			int i, j, vector;
 			bool flag;
@@ -132,16 +119,15 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 				i = rand() % nn;
 				j = rand() % nn;
 				vector = rand() % 2;
-				flag = check_field(m, nn, i, j, vector, *(p + index + 1));
+				flag = check_field(m, nn, i, j, vector, sh[index][z][1]);
 				if (flag)
 				{
 					if (mode.m_generator == 0 && mode.demo == 0)
-						scan_point2(m, nn, i, j, vector, *(p + index + 1));
-					m = create_item(m, nn, i, j, vector, *(p + index + 1));
+						scan_point2(m, nn, i, j, vector, sh[index][z][1]);
+					m = create_item(m, nn, i, j, vector, sh[index][z][1]);
 				}
 			} while (!flag);
 		}
-		index += 2;
 	}
 	mode.m_generator = 1;
 	return m;
