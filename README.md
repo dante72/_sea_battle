@@ -1,3 +1,3 @@
 # Sea Battle (Battleship) / Морской бой
-![Screenshot](menu.png)
-![Screenshot](sea_battle.png)
+![Screenshot](screenshots/menu.png)
+![Screenshot](screenshots/sea_battle.png)
