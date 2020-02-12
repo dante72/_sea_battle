@@ -2,16 +2,13 @@
 #include "sea_battle.h"
 
 int index = 0;
-
-//Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, 
-//LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White
-
+enum Color { Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White };
 char ship[] = { char(219), char(219), '\0' };
 char destroyed_ship[] = "XX";
 char miss[] = { char(177), char(177), '\0' };
 char sea[] = { char(177), char(177), '\0' };
 
-int th[][8]	{	//ship			sea			dship			miss
+int th[][8]	{	//ship			 sea			dship			miss
 				{White, Black, Cyan, Black, Black, White, White, Black},
 				{Yellow, Black, Blue, Cyan, Black, Yellow, Yellow, Cyan},
 			};

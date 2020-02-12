@@ -140,12 +140,11 @@ void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool s
 		}
 		cout << endl;
 	}
-		char ch;
-		cout << "   ";
-		for (int k = 0; k < n; k++)
-		{
-			ch = 'A' + k;
-			cout << ch << " ";
-		}
-	
+	char ch;
+	cout << "   ";
+	for (int k = 0; k < n; k++)
+	{
+		ch = 'A' + k;
+		cout << ch << " ";
+	}
 }

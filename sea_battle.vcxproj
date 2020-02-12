@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sourses\main.cpp" />
+    <ClCompile Include="sourses\map_generator.cpp" />
+    <ClCompile Include="sourses\menu.cpp" />
+    <ClCompile Include="sourses\print_char.cpp" />
+    <ClCompile Include="sourses\print_field.cpp" />
+    <ClCompile Include="sourses\scan.cpp" />
+    <ClCompile Include="sourses\sea_battle.cpp" />
+    <ClCompile Include="sourses\shooting.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sourses\sea_battle.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{7185D5D4-C217-465A-A948-E87D3A6A022E}</ProjectGuid>
@@ -122,19 +135,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="sea_battle.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="map_generator.cpp" />
-    <ClCompile Include="menu.cpp" />
-    <ClCompile Include="print_field.cpp" />
-    <ClCompile Include="print_char.cpp" />
-    <ClCompile Include="scan.cpp" />
-    <ClCompile Include="shooting.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="sea_battle.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

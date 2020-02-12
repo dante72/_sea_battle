@@ -1,7 +1,7 @@
 #include <conio.h>
 #include "sea_battle.h"
 
-bool g_exit;
+Unit **g_m[2];
 
 using namespace std;
 
@@ -102,12 +102,16 @@ int count_ships(Unit** m, const int nn, bool flag)
 int sea_battle(const int nn, Modes mode)
 {
 	Player p[2];
-	g_exit = false;
 	bool demo = mode.demo;
-
+	
 	for (int i = 0; i < 2; i++)
 	{
-		p[i].m = create_map(nn, mode);
+		p[i].m = create_map(nn);
+		g_m[i] = p[i].m;
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		p[i].m = map_gen(p[i].m, nn, mode);
 		p[i].under_attack = false;
 		p[i].r = 0;
 		p[i].status = -1;
@@ -118,27 +122,27 @@ int sea_battle(const int nn, Modes mode)
 	print(p, nn, demo, -1, -1);
 	cout << "\n\t";
 	print_player(index, demo);
-	cout << "is  first!";
-
+	cout << "is  first!" << endl << "\n\tPress ENTER...";
 	getchar();
 
 	int k = count_ships(p[0].m, nn, 0);
 	while (k != count_ships(p[0].m, nn, 1) && k != count_ships(p[1].m, nn, 1))
 	{	
-		if (demo && _getch() == ESC && exit_menu() == 0)
+		if (demo && _getch() == ESC)
 		{
-			print_all(p, nn, index, demo, p[1].r, p[0].r);
-			continue;
-		}
-		battle_shoot(p, nn, demo, index);
-		if (g_exit)
-		{
-			for (int i = 0; i < 2; i++)
+			if (exit_menu() == 1)
 			{
-				delete[] p[i].m;
+				free_m();
+				menu(0);
 			}
-			return 0;
+			else
+			{
+				print_all(p, nn, index, demo, p[1].r, p[0].r);
+				continue;
+			}
 		}
+
+		battle_shoot(p, nn, demo, index);
 		print_all(p, nn, index, demo, p[1].r, p[0].r);
 		if (p[index].status == 0)
 			index = (++index) % 2;
@@ -150,7 +154,7 @@ int sea_battle(const int nn, Modes mode)
 	}
 	cout << "\n\t";
 	print_player(index, demo);
-	cout << "win!" << endl << "\t\tGame Over";
+	cout << "win!" << endl << "\t\tGame Over" << endl << "\n\tPress ENTER...";
 	getchar();
 	return 0;
 }
@@ -158,9 +162,13 @@ int sea_battle(const int nn, Modes mode)
 int exit_menu()
 {
 	if (menu(2) == 1)
-	{
-		g_exit = true;
 		return 1;
-	}
+
 	return 0;
+}
+
+void free_m()
+{
+	for (int i = 0; i < 2; i++)
+		delete[] g_m[i];
 }

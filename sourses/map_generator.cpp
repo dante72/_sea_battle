@@ -62,7 +62,7 @@ Unit** map_generator(Unit** m, const int nn, Modes &mode)
 				flag = check_field(m, nn, i, j, vector, size - z);
 				if (flag)
 				{
-					if (mode.m_generator == 0 && mode.demo == 0)
+					if (mode.demo == 0 && mode.m_generator == 0)
 						scan_point2(m, nn, i, j, vector, size - z);
 					m = create_item(m, nn, i, j, vector, size - z);
 				}
@@ -98,7 +98,7 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 				flag = check_field(m, nn, i, j, vector, sh[index][z][1]);
 				if (flag)
 				{
-					if (mode.m_generator == 0 && mode.demo == 0)
+					if (mode.demo == 0 && mode.m_generator == 0)
 						scan_point2(m, nn, i, j, vector, sh[index][z][1]);
 					m = create_item(m, nn, i, j, vector, sh[index][z][1]);
 				}
@@ -109,10 +109,15 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 	return m;
 }
 
-Unit** create_map(const int nn, Modes &mode)
+Unit** create_map(const int nn)
 {
 	Unit** m = create_squard(nn);
 	m = zero_matrix(m, nn, 0, 0);
+	return m;
+}
+
+Unit** map_gen(Unit **m, const int nn, Modes& mode)
+{
 	if (mode.mode == 0)
 		m = map_generator(m, nn, mode);
 	else

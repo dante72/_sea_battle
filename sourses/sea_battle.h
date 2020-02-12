@@ -25,8 +25,6 @@ struct Modes
 	bool demo;
 };
 
-enum Color { Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White };
-
 enum Buttons {
 	ESC = 27,
 	Enter = 13,
@@ -49,7 +47,8 @@ Unit** zero_matrix(Unit** m, const int n, short value, bool status);
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size);
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size);
 Unit** map_generator(Unit** m, const int nn, Modes &mode);
-Unit** create_map(const int nn, Modes &mode);
+Unit** create_map(const int nn);
+Unit** map_gen(Unit** m, const int nn, Modes &mode);
 Unit** map_generator2(Unit** m, const int nn, Modes &mode);
 int scan_point2(Unit** m, const int nn, int &i, int &j, int &vector, int size);
 
@@ -67,6 +66,7 @@ Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j);
 Player *battle_shoot(Player *pl, const int nn, bool demo, int index);
 int count_ships(Unit** m, const int nn, bool flag);
 int sea_battle(const int nn, Modes mode);
+void free_m();
 
 void print(Player* p, const int n, bool demo, int point, int poitn2);
 void print_player(int index, bool demo);

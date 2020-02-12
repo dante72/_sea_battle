@@ -1,12 +1,10 @@
 #include <ctime>
 #include "sea_battle.h"
 
-using namespace std;
-
 int main()
 {
 	srand(time(0));
-	menu(0);
+	menu(-1);
 
 	return 0;
 }

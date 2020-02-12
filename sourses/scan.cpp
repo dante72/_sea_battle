@@ -34,8 +34,11 @@ int scan_point(Player* p, const int nn, int index)
 				enter = true;
 			break;
 		case ESC:
-			if(exit_menu() == 1)
-				enter = true;
+			if (exit_menu() == 1)
+			{
+				free_m();
+				menu(0);
+			}
 		}
 	} while (!enter);
 	return nn * i + j;
@@ -45,6 +48,7 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 {
 	int x;
 	bool enter = false, fcolor;
+
 	do {
 		fcolor = check_field(m, nn, i, j, vector, size);
 		print_one(m, nn, i, j, vector, size, fcolor);
@@ -78,6 +82,12 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 			if (check_field(m, nn, i, j, vector, size))
 				enter = true;
 			break;
+		case ESC:
+			if (exit_menu() == 1)
+			{
+				free_m();
+				menu(0);
+			}
 		}
 	} while (!enter);
 	return nn * i + j;

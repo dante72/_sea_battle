@@ -1,6 +1,29 @@
 #include <conio.h>
 #include "sea_battle.h"
 
+const int g = 7;
+Menu g_m[g];
+char g_str[g][5][20]
+{
+	{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
+	{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
+	{ "Back to Menu", "Yes", "No" },
+	{ "Options", "Maps", "Generator", "Themes", "Back" },
+	{ "Maps", "Standart", "Alternative" },
+	{ "Themes", "Theme1", "Theme2", "Back" },
+	{ "Map Generator", "Turn OFF", "Turn ON" }
+};
+int g_count[g]{ 4, 4, 2, 4, 2, 3, 2 };
+int g_path[g][4]{
+					{1, 1, 3, -1},
+					{10, 10, 10, 0},
+					{11, 12},
+					{4, 6, 5, 0},
+					{3, 3},
+					{13, 13, 3},
+					{3, 3}
+};
+
 using namespace std;
 
 void print_menu(char str[][20], const int n, int i)
@@ -51,50 +74,30 @@ Menu* change_menu(Menu* m, char str[][20], int index)
 
 int menu(int n_menu)
 {
-	const int g = 7;
-	Menu m[g];
 	Modes mode;
-
-	char str[g][5][20]
-	{
-		{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
-		{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
-		{ "Back to Menu", "Yes", "No" },
-		{ "Options", "Maps", "Generator", "Themes", "Back" },
-		{ "Maps", "Standart", "Alternative" },
-		{ "Themes", "Theme1", "Theme2", "Back" },
-		{ "Map Generator", "Turn OFF", "Turn ON" },
-	};
-	int count[g]	{ 4, 4, 2, 4, 2, 3, 2};
-	int path[g][4]	{ 
-						{1, 1, 3, -1},
-						{10, 10, 10, 0},
-						{11, 12},
-						{4, 6, 5, 0},
-						{3, 3},
-						{13, 13, 3},
-						{3, 3}
-					};
-
-	for (int j = 0; j < g; j++)
-	{
-		m[j].name = j;
-		m[j].count = count[j];
-		m[j].choose = 0;
-	}
-
 	int i = n_menu;
+
+	if (i == -1)
+	{
+		for (int j = 0; j < g; j++)
+		{
+			g_m[j].name = j;
+			g_m[j].count = g_count[j];
+			g_m[j].choose = 0;
+		}
+		i = 0;
+	}
 	for (;;)
 	{
-		change_menu(m, str[i], i);
-		i = path[i][m[i].choose];
+		change_menu(g_m, g_str[i], i);
+		i = g_path[i][g_m[i].choose];
 		switch (i)
 		{
 		case 10:
-				mode.mode = m[4].choose;
-				mode.m_generator = m[6].choose;
-				mode.demo = m[0].choose;
-				sea_battle((m[1].choose + 1) * 5, mode);
+				mode.mode = g_m[4].choose;
+				mode.m_generator = g_m[6].choose;
+				mode.demo = g_m[0].choose;
+				sea_battle((g_m[1].choose + 1) * 5, mode);
 				i = 0;
 				break;
 		case -1:
@@ -104,7 +107,7 @@ int menu(int n_menu)
 		case 11:
 				return 1;
 		case 13:
-			change_theme(m[5].choose);
+			change_theme(g_m[5].choose);
 			i = 5;
 			break;
 		}
