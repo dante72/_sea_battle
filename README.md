@@ -12,7 +12,7 @@
 2) Демонстрационный режим (ИИ против  ИИ)
 3) Расстановка кораблей в режиме "Игрок против ИИ"
 4) Карты различных размеров (5х5, 10х10, 15х15)
-5) Режим игры с альтернативным набором кораблей (Options -> Mods)
+5) Режим игры с альтернативным набором кораблей (Options -> Game mode)
 6) Возможность отключить расстановку кораблей в режиме "Игрок против ИИ" (Options -> Generator)
 7) Изменение цветовой темы игры (Options -> Themes)
 8) Выход из игры в главное меню (ESC)
@@ -40,7 +40,7 @@ Battleship (also Battleships or Sea Battle) is a strategy type guessing game for
 2) Demonstration mode (AI vs AI)
 3) Arrangement of ships in the "Player vs AI" mode
 4) Maps of various sizes (5x5, 10x10, 15x15)
-5) Game mode with an alternative set of ships (Options -> Mods)
+5) Game mode with an alternative set of ships (Options -> Game mode)
 6) Disable the arrangement of ships in the "Player vs AI" mode (Options -> Generator)
 7) Changing the game's color theme (Options -> Themes)
 8) Exit the game to the main menu (ESC)
