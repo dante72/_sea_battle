@@ -8,8 +8,8 @@ char g_str[g][5][20]
 	{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
 	{ "Choose size", " 5x5", "10x10", "15x15", " Back" },
 	{ "Back to Menu", "Yes", "No" },
-	{ "Options", "Mods", "Map generator", "Themes", "Back" },
-	{ "Mods", "Standart", "Alternative" },
+	{ "Options", "Game mode", "Map generator", "Themes", "Back" },
+	{ "Game mode", "Standart", "Alternative" },
 	{ "Themes", "Theme1", "Theme2", "Back" },
 	{ "Map generator", "Turn OFF", "Turn ON" }
 };
