@@ -6,12 +6,12 @@ Menu g_m[g];
 char g_str[g][5][20]
 {
 	{ "SEA BATTLE" ,"Game", "Demo", "Options", "Exit" },
-	{ "Choose Size", " 5x5", "10x10", "15x15", " Back" },
+	{ "Choose size", " 5x5", "10x10", "15x15", " Back" },
 	{ "Back to Menu", "Yes", "No" },
-	{ "Options", "Maps", "Generator", "Themes", "Back" },
-	{ "Maps", "Standart", "Alternative" },
+	{ "Options", "Mods", "Map generator", "Themes", "Back" },
+	{ "Mods", "Standart", "Alternative" },
 	{ "Themes", "Theme1", "Theme2", "Back" },
-	{ "Map Generator", "Turn OFF", "Turn ON" }
+	{ "Map generator", "Turn OFF", "Turn ON" }
 };
 int g_count[g]{ 4, 4, 2, 4, 2, 3, 2 };
 int g_path[g][4]{

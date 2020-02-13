@@ -12,6 +12,7 @@ bool ship_is_destroyed(Unit** m, const int nn, int i, int j)
 	int a = head / nn;
 	int b = head % nn;
 	int size = m[i][j].value;
+
 	//if (a + 1 < nn && m[a + 1][b].value > 0)
 		//	vector = 0;
 	if (b + 1 < nn && m[a][b + 1].value > 0)
@@ -31,6 +32,7 @@ Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j)
 	int a = head / nn;
 	int b = head % nn;
 	int size = m[a][b].value;
+
 	//if (a + 1 < nn && m[a + 1][b].value > 0)
 		//	vector = 0;
 	if (b + 1 < nn && m[a][b + 1].value > 0)
@@ -92,10 +94,12 @@ Player *battle_shoot(Player *pl, const int nn, bool demo, int index)
 int count_ships(Unit** m, const int nn, bool flag)
 {
 	int k = 0;
+
 	for (int i = 0; i < nn; i++)
 		for (int j = 0; j < nn; j++)
 			if (m[i][j].value > 0 && m[i][j].status && flag || m[i][j].value > 0 && !m[i][j].status && !flag)
 				k++;
+
 	return k;
 }
 

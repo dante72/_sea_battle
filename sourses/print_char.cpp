@@ -2,7 +2,9 @@
 #include "sea_battle.h"
 
 int index = 0;
+
 enum Color { Black = 0, Blue, Green, Cyan, Red, Magenta, Brown, LightGray, DarkGray, LightBlue, LightGreen, LightCyan, LightRed, LightMagenta, Yellow, White };
+
 char ship[] = { char(219), char(219), '\0' };
 char destroyed_ship[] = "XX";
 char miss[] = { char(177), char(177), '\0' };
@@ -87,9 +89,7 @@ void change_theme(int theme)
 void DrawPoint2(Unit p, bool status)
 {
 	int t_sh = thp[index][0], bg_sh = thp[index][1], \
-		t_sea = thp[index][2], bg_sea = thp[index][3], \
-		t_dsh = thp[index][4], bg_dsh = thp[index][5], \
-		t_miss = thp[index][6], bg_miss = thp[index][7];
+		t_dsh = thp[index][4], bg_dsh = thp[index][5];
 
 	if (status)
 		draw_item(ship, t_sh, bg_sh);

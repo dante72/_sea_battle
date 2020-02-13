@@ -3,7 +3,7 @@
 
 int main()
 {
-	srand(time(0));
+	srand(time(NULL));
 	menu(-1);
 
 	return 0;

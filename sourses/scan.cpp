@@ -5,9 +5,9 @@ int scan_point(Player* p, const int nn, int index)
 {
 	int i = p[1].r / nn;
 	int j = p[1].r % nn;
-
 	int x;
 	bool enter = false;
+
 	do {
 		print_all(p, nn, index, false, nn * i + j, p[0].r);
 		x = _getch();
