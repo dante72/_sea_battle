@@ -1,5 +1,8 @@
 # Sea Battle (Battleships) / Морской бой
 
+![Screenshot](screenshots/menu.png)
+![Screenshot](screenshots/sea_battle.png)
+
 ### *Итоговая работа по курсу "Основы программирования на языке С++"*
 
 «Морской бой» — игра для двух участников, в которой игроки по очереди называют координаты на неизвестной им карте соперника. Если у соперника по этим координатам имеется корабль (координаты заняты), то корабль или его часть «топится», а попавший получает право сделать ещё один ход. Цель игрока — первым потопить все корабли противника.
@@ -52,6 +55,3 @@ or
 ***Teacher:*** *Shvechikov A. A.*
 
 ***Computer Academy "STEP", Moscow, February 2020***
-
-![Screenshot](screenshots/menu.png)
-![Screenshot](screenshots/sea_battle.png)
