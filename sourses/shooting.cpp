@@ -7,6 +7,7 @@ int n_space(Unit** m, const int nn, bool status)
 		for (int j = 0; j < nn; j++)
 			if (m[i][j].status == status)
 				k++;
+
 	return k;
 }
 
@@ -15,6 +16,7 @@ int random_shoot(Unit** m, const int nn)
 	int k = 0;
 	int i = 0, j = 0;
 	int random = rand() % n_space(m, nn, 0);
+
 	for (i = 0; i < nn; i++)
 		for (j = 0; j < nn; j++)
 		{
@@ -25,12 +27,14 @@ int random_shoot(Unit** m, const int nn)
 				return j + nn * i;
 			}
 		}
+
 	return 0;
 }
 
 int check_area(Unit** m, const int nn, int i, int j, bool status)
 {
 	int check = 0;
+
 	for (int k = i - 1; k <= i + 1; k++)
 	{
 		for (int p = j - 1; p <= j + 1; p++)
@@ -43,6 +47,7 @@ int check_area(Unit** m, const int nn, int i, int j, bool status)
 				check++;
 		}
 	}
+
 	return check;
 }
 
@@ -50,6 +55,7 @@ int first_hit(Unit** m, const int nn, int i, int j)
 {
 	int random = rand() % check_area(m, nn, i, j, 0) + 1;
 	int check = 0;
+
 	for (int k = i - 1; k <= i + 1; k++)
 	{
 		for (int p = j - 1; p <= j + 1; p++)
@@ -64,6 +70,7 @@ int first_hit(Unit** m, const int nn, int i, int j)
 				return nn * k + p;
 		}
 	}
+
 	return 0;
 }
 
@@ -80,6 +87,7 @@ int ship_head(Unit** m, const int nn, int i, int j)
 		if ((i == 0 || m[i - 1][j].value == 0) && (j == 0 || m[i][j - 1].value == 0))
 			break;
 	}
+
 	return nn * i + j;
 }
 
@@ -91,6 +99,7 @@ int second_hit(Unit** m, const int nn, int i, int j, int random)
 	int b = head % nn;
 	int size = m[i][j].value;
 	int check = 0;
+
 	if (a + 1 < nn)
 		if (m[a + 1][b].value > 0)
 		{
@@ -117,6 +126,7 @@ int second_hit(Unit** m, const int nn, int i, int j, int random)
 					return k * nn + p;
 			}
 		}
+
 	return second_hit(m, nn, i, j, check);
 }
 

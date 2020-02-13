@@ -3,10 +3,12 @@
 Unit** create_squard(const int n)
 {
 	Unit** matrix = new Unit * [n];
+
 	for (int i = 0; i < n; i++)
 	{
 		matrix[i] = new Unit[n];
 	}
+
 	return matrix;
 }
 
@@ -18,6 +20,7 @@ Unit** zero_matrix(Unit** m, const int n, short value, bool status)
 			m[i][j].value = value;
 			m[i][j].status = status;
 		}
+
 	return m;
 }
 
@@ -26,6 +29,7 @@ Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size)
 	for (int k = i; k <= i + (size - 1) * vector; k++)
 		for (int p = j; p <= j + (size - 1) * !vector; p++)
 			m[k][p].value = size;
+
 	return m;
 }
 
@@ -41,6 +45,7 @@ bool check_field(Unit** m, const int nn, int i, int j, int vector, int size)
 			if (m[k][p].value != 0)
 				return false;
 		}
+
 	return true;
 }
 
@@ -70,6 +75,7 @@ Unit** map_generator(Unit** m, const int nn, Modes &mode)
 		}
 	}
 	mode.m_generator = 1;
+
 	return m;
 }
 
@@ -106,6 +112,7 @@ Unit** map_generator2(Unit** m, const int nn, Modes &mode)
 		}
 	}
 	mode.m_generator = 1;
+
 	return m;
 }
 
@@ -113,6 +120,7 @@ Unit** create_map(const int nn)
 {
 	Unit** m = create_squard(nn);
 	m = zero_matrix(m, nn, 0, 0);
+
 	return m;
 }
 
@@ -122,5 +130,6 @@ Unit** map_gen(Unit **m, const int nn, Modes& mode)
 		m = map_generator(m, nn, mode);
 	else
 		m = map_generator2(m, nn, mode);
+
 	return m;
 }

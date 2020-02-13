@@ -22,6 +22,7 @@ bool ship_is_destroyed(Unit** m, const int nn, int i, int j)
 		for (int p = b; p <= b + (size - 1) * vector; p++)
 			if (m[k][p].status == 0)
 				return false;
+
 	return true;
 }
 
@@ -45,6 +46,7 @@ Unit** area_of_the_destroyed_ship(Unit** m, const int nn, int i, int j)
 			if (m[k][p].status == 0)
 				m[k][p].status = 1;
 		}
+
 	return m;
 }
 
@@ -64,9 +66,7 @@ Player *battle_shoot(Player *pl, const int nn, bool demo, int index)
 		else
 			p.r = aim_shoot(p.m, nn, p.last_hit / nn, p.last_hit % nn);
 	}
-
 	p.m[p.r / nn][p.r % nn].status = true;
-
 	if (p.m[p.r / nn][p.r % nn].value > 0)
 	{
 		p.last_hit = p.r;
@@ -88,6 +88,7 @@ Player *battle_shoot(Player *pl, const int nn, bool demo, int index)
 		p.status = 0;
 	}
 	pl[index] = p;
+
 	return pl;
 }
 
@@ -145,13 +146,11 @@ int sea_battle(const int nn, Modes mode)
 				continue;
 			}
 		}
-
 		battle_shoot(p, nn, demo, index);
 		print_all(p, nn, index, demo, p[1].r, p[0].r);
 		if (p[index].status == 0)
 			index = (++index) % 2;
 	}
-
 	for (int i = 0; i < 2; i++)
 	{
 		delete[] p[i].m;
@@ -160,6 +159,7 @@ int sea_battle(const int nn, Modes mode)
 	print_player(index, demo);
 	cout << "win!" << endl << "\t\tGame Over" << endl << "\n\tPress ENTER...";
 	getchar();
+
 	return 0;
 }
 

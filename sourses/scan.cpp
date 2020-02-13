@@ -41,6 +41,7 @@ int scan_point(Player* p, const int nn, int index)
 			}
 		}
 	} while (!enter);
+
 	return nn * i + j;
 }
 
@@ -90,5 +91,6 @@ int scan_point2(Unit **m, const int nn, int &i, int &j, int &vector, int size)
 			}
 		}
 	} while (!enter);
+
 	return nn * i + j;
 }

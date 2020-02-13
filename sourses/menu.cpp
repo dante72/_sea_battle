@@ -31,10 +31,10 @@ void print_menu(char str[][20], const int n, int i)
 	char point[] = ">> ";
 	char empty[] = "   ";
 	char *change[4];
+
 	for (int j = 0; j < n; j++)
 		change[j] = empty;
 	change[i] = point;
-
 	system("cls");
 	cout << "\t"<< str[0] << "\n\n";
 	for (int j = 0; j < n; j++)
@@ -66,7 +66,6 @@ Menu* change_menu(Menu* m, char str[][20], int index)
 			enter = true;
 		}
 	} while (!enter);
-
 	m[index].choose = i;
 
 	return m;
@@ -112,5 +111,6 @@ int menu(int n_menu)
 			break;
 		}
 	}
+
 	return 0;
 }

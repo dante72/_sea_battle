@@ -32,8 +32,10 @@ void print(Player* p, const int n, bool demo, int point, int point2)
 				DrawUnit(p[1].m[i][j], demo);
 		}
 		cout << endl;
-	}	
+	}
+
 	char ch;
+
 	cout << "   ";
 	for (int i = 0; i < n; i++)
 	{
@@ -140,7 +142,9 @@ void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool s
 		}
 		cout << endl;
 	}
+
 	char ch;
+
 	cout << "   ";
 	for (int k = 0; k < n; k++)
 	{
