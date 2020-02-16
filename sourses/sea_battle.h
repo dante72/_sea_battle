@@ -67,6 +67,7 @@ Player *battle_shoot(Player *pl, const int nn, bool demo, int index);
 int count_ships(Unit** m, const int nn, bool flag);
 int sea_battle(const int nn, Modes mode);
 void free_m();
+int press_button();
 
 void print(Player* p, const int n, bool demo, int point, int poitn2);
 void print_player(int index, bool demo);

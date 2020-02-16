@@ -133,7 +133,7 @@ int sea_battle(const int nn, Modes mode)
 	int k = count_ships(p[0].m, nn, 0);
 	while (k != count_ships(p[0].m, nn, 1) && k != count_ships(p[1].m, nn, 1))
 	{	
-		if (demo && _getch() == ESC)
+		if (demo && press_button() == ESC)
 		{
 			if (exit_menu() == 1)
 			{
@@ -175,4 +175,16 @@ void free_m()
 {
 	for (int i = 0; i < 2; i++)
 		delete[] g_m[i];
+}
+
+int press_button()
+{
+	int button;
+
+	do
+	{
+		button = _getch();
+	} while (!(button == ESC || button == Enter || button == Space));
+
+	return button;
 }
