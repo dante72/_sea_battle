@@ -46,8 +46,7 @@ Battleship (also Battleships or Sea Battle) is a strategy type guessing game for
 
 ***Launch:***
 **sea_battle.sln** (Microsoft Visual Studio Community 2019 (Version 16.4.3))
-or
-**sea_battle.exe**
+
 #
 ***Student:*** *Kutyrev D. O.*
 
