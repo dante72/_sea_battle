@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sourses\main.cpp">
+    <ClCompile Include="sources\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\map_generator.cpp">
+    <ClCompile Include="sources\map_generator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\menu.cpp">
+    <ClCompile Include="sources\menu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\print_char.cpp">
+    <ClCompile Include="sources\print_char.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\print_field.cpp">
+    <ClCompile Include="sources\print_field.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\scan.cpp">
+    <ClCompile Include="sources\scan.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\sea_battle.cpp">
+    <ClCompile Include="sources\sea_battle.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="sourses\shooting.cpp">
+    <ClCompile Include="sources\shooting.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sourses\sea_battle.h">
+    <ClInclude Include="sources\sea_battle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

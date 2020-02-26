@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sourses\main.cpp" />
-    <ClCompile Include="sourses\map_generator.cpp" />
-    <ClCompile Include="sourses\menu.cpp" />
-    <ClCompile Include="sourses\print_char.cpp" />
-    <ClCompile Include="sourses\print_field.cpp" />
-    <ClCompile Include="sourses\scan.cpp" />
-    <ClCompile Include="sourses\sea_battle.cpp" />
-    <ClCompile Include="sourses\shooting.cpp" />
+    <ClCompile Include="sources\main.cpp" />
+    <ClCompile Include="sources\map_generator.cpp" />
+    <ClCompile Include="sources\menu.cpp" />
+    <ClCompile Include="sources\print_char.cpp" />
+    <ClCompile Include="sources\print_field.cpp" />
+    <ClCompile Include="sources\scan.cpp" />
+    <ClCompile Include="sources\sea_battle.cpp" />
+    <ClCompile Include="sources\shooting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sourses\sea_battle.h" />
+    <ClInclude Include="sources\sea_battle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

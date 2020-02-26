@@ -2,14 +2,26 @@
 
 Unit** create_squard(const int n)
 {
-	Unit** matrix = new Unit * [n];
+	Unit** matrix = new Unit * [n + 1];
 
 	for (int i = 0; i < n; i++)
 	{
 		matrix[i] = new Unit[n];
 	}
+	matrix[n] = nullptr;
 
 	return matrix;
+}
+
+void ft_delete(Unit** matrix)
+{
+	int i = 0;
+	while (matrix[i])
+	{
+		delete[] matrix[i];
+		i++;
+	}
+	delete[] matrix;
 }
 
 Unit** zero_matrix(Unit** m, const int n, short value, bool status)

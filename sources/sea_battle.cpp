@@ -153,7 +153,7 @@ int sea_battle(const int nn, Modes mode)
 	}
 	for (int i = 0; i < 2; i++)
 	{
-		delete[] p[i].m;
+		ft_delete(p[i].m);
 	}
 	cout << "\n\t";
 	print_player(index, demo);
@@ -174,7 +174,7 @@ int exit_menu()
 void free_m()
 {
 	for (int i = 0; i < 2; i++)
-		delete[] g_m[i];
+		ft_delete(g_m[i]);
 }
 
 int press_button()

@@ -43,6 +43,7 @@ struct Menu
 };
 
 Unit** create_squard(const int n);
+void ft_delete(Unit** matrix);
 Unit** zero_matrix(Unit** m, const int n, short value, bool status);
 Unit** create_item(Unit** m, const int nn, int i, int j, int vector, int size);
 bool check_field(Unit** m, const int nn, int i, int j, int vector, int size);

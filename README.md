@@ -19,8 +19,7 @@
 
 ***Запуск:***
 **sea_battle.sln** (Microsoft Visual Studio Community 2019 (Версия 16.4.3))
-или
-**sea_battle.exe**
+
 #
  ***Студент:***	      	*Кутырёв Д.О.*
  
