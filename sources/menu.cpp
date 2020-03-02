@@ -96,6 +96,7 @@ int menu(int n_menu)
 				mode.mode = g_m[4].choose;
 				mode.m_generator = g_m[6].choose;
 				mode.demo = g_m[0].choose;
+				system("cls");
 				sea_battle((g_m[1].choose + 1) * 5, mode);
 				i = 0;
 				break;

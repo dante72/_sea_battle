@@ -159,6 +159,7 @@ void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool s
 		ch = 'A' + k;
 		cout << ch << " ";
 	}
+	cout << "\n\n\tUse Up, Down, Left, Right and Enter..." << endl;
 }
 
 void cls()
