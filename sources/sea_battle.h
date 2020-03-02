@@ -76,6 +76,7 @@ void print_unit(int r, const int nn);
 void print_status(int status);
 void print_all(Player* p, const int nn, int index, bool demo, int point, int point2);
 void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool status);
+void cls();
 
 void SetColor(int text, int background);
 void draw_item(char *item, int color, int bg);

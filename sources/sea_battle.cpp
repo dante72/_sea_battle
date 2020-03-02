@@ -127,7 +127,7 @@ int sea_battle(const int nn, Modes mode)
 	print(p, nn, demo, -1, -1);
 	cout << "\n\t";
 	print_player(index, demo);
-	cout << "is  first!" << endl << "\n\tPress ENTER...";
+	cout << "is  first!" << endl << "\n\n\tPress ENTER...";
 	getchar();
 
 	int k = count_ships(p[0].m, nn, 0);

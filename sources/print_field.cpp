@@ -1,4 +1,5 @@
 #include "sea_battle.h"
+#include "Windows.h"
 
 using namespace std;
 
@@ -78,10 +79,10 @@ void print_status(int status)
 	switch (status)
 	{
 	case 0:
-		cout << "  - Miss";
+		cout << "  - Miss                    ";
 		break;
 	case 1:
-		cout << "  - Hit the ship";
+		cout << "  - Hit the ship            ";
 		break;
 	case 2:
 		cout << "  - Ship has been destroyed";
@@ -92,7 +93,7 @@ void print_status(int status)
 
 void print_all(Player* p, const int nn, int index, bool demo, int point, int point2)
 {
-	system("cls");
+	cls();
 	print(p, nn, demo, point, point2);
 	cout << endl;
 	print_player(1, demo);
@@ -121,11 +122,18 @@ void print_all(Player* p, const int nn, int index, bool demo, int point, int poi
 		print_unit(point, nn);
 		cout << endl;
 	}
+	if (demo)
+	{
+		cout << "\n\tPress Enter or Space to make a move" << endl;
+		cout << "\tPress ESC to exit" << endl;
+	}
+	else
+		cout << "\tUse Up, Down, Left, Right and Enter..." << endl;
 }
 
 void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool status)
 {
-	system("cls");
+	cls();
 	for (int k = 0; k < n; k++)
 	{
 		if (k + 1 > 9)
@@ -151,4 +159,13 @@ void print_one(Unit** m, const int n, int i, int j, int vector, int size, bool s
 		ch = 'A' + k;
 		cout << ch << " ";
 	}
+}
+
+void cls()
+{
+	HANDLE hd = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD cd;
+	cd.X = 0;
+	cd.Y = 0;
+	SetConsoleCursorPosition(hd, cd);
 }
