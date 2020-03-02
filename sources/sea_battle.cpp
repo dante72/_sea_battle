@@ -125,11 +125,12 @@ int sea_battle(const int nn, Modes mode)
 	int index = rand() % 2;
 	system("cls");
 	print(p, nn, demo, -1, -1);
-	cout << "\n\t";
+	cout << "\n\n\n\n\t";
 	print_player(index, demo);
-	cout << "is  first!" << endl << "\n\n\tPress ENTER...";
-	getchar();
-	system("cls");
+	cout << "is  first!" << endl;
+	if (!demo)
+		getchar();
+
 	int k = count_ships(p[0].m, nn, 0);
 	while (k != count_ships(p[0].m, nn, 1) && k != count_ships(p[1].m, nn, 1))
 	{	
@@ -167,7 +168,7 @@ int exit_menu()
 {
 	if (menu(2) == 1)
 		return 1;
-
+	system("cls");
 	return 0;
 }
 
